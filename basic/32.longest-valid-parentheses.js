@@ -9,12 +9,9 @@
  */
 var longestValidParentheses = function(s) {
   const rollIn = {
-    '[': ']',
     '(': ')',
-    '{': '}',
   }
 
-  let max = 0
   const nLenght = s.length
 
   function caculated(s, result) {
@@ -38,16 +35,16 @@ var longestValidParentheses = function(s) {
     }
   }
 
-  for (let n = 1; n <= (nLenght / 2); n++) {
+  for (let n = Math.floor(nLenght / 2); n > 0 ; n--) {
     const curLength = 2 * n
     for (let i = 0; (i + curLength) <= nLenght; i++) {
       if (caculated(s.slice(i, i+ curLength), '')){
-        max = curLength
+        return curLength
       }
     }
   }
 
-  return max
+  return 0
 }
 
 
