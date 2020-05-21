@@ -26,15 +26,12 @@ var calculate = function(s) {
   const arr = seprate(s, ['+', '-', '(', ')'])
   const exeList = []
 
-  console.log(arr)
-
   function handle(current) {
     const length = exeList.length
     if (['+', '-', '('].includes(current) || length === 0) {
       exeList.push(current)
     } else {
       if (current === ')') {
-        // console.log(exeList)
         exeList[exeList.length - 2] = exeList[exeList.length - 1]
         exeList.pop()
         if (exeList.length !== 1) {
@@ -57,12 +54,9 @@ var calculate = function(s) {
       }
     }
   }
-  // console.log(arr)
-
   for (let i = 0; i < arr.length; i++) {
     const current = arr[i]
     handle(current)
-    // console.log(exeList)
   }
 
   return exeList[0]
